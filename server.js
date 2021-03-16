@@ -50,8 +50,14 @@ app.route(prefix + '/matieres')
 app.route(prefix + '/eleves')
   .get(eleve.getEleves);
 
-app.route(prefix + '/devoirs')
-  .get(devoir.getDevoirs);
+app.route(prefix + '/devoirs/rendus')
+  .get(devoir.getDevoirsRendus);
+
+app.route(prefix + '/devoirs/nonRendus')
+  .get(devoir.getDevoirsNonRendus);  
+
+  app.route(prefix + '/devoir/:id')
+  .get(devoir.getDevoirById);    
 
 // app.route(prefix + '/assignments/:id')
 //   .get(assignment.getAssignment)
