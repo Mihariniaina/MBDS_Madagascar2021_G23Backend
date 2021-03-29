@@ -11,4 +11,14 @@ function getEleves(req, res){
     });
 }
 
-module.exports = { getEleves };
+function getEleveById(req, res){
+    let id = req.params.id
+    eleve.findOne({_id: id}, (err, eleve) => {
+        if(err){
+            res.send(err)
+        }
+        res.send(eleve);
+    });
+}
+
+module.exports = { getEleves, getEleveById };

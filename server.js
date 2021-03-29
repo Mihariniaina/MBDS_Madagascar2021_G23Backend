@@ -47,11 +47,26 @@ const prefix = '/api';
 app.route(prefix + '/matieres')
   .get(matiere.getMatieres);
 
+app.route(prefix + '/matiere/:id')
+  .get(matiere.getMatiereById); 
+
 app.route(prefix + '/eleves')
   .get(eleve.getEleves);
 
-app.route(prefix + '/devoirs')
-  .get(devoir.getDevoirs);
+app.route(prefix + '/eleve/:id')
+  .get(eleve.getEleveById);  
+
+app.route(prefix + '/devoirs/rendus')
+  .get(devoir.getDevoirsRendus);
+
+app.route(prefix + '/devoirs/nonRendus')
+  .get(devoir.getDevoirsNonRendus);  
+
+app.route(prefix + '/devoir/:id')
+  .get(devoir.getDevoirById);
+
+  app.route(prefix + '/devoir')  
+  .put(devoir.modifierDevoir);    
 
 // app.route(prefix + '/assignments/:id')
 //   .get(assignment.getAssignment)
