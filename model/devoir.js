@@ -3,8 +3,8 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let DevoirSchema = Schema({
-    auteur: String,
-    matiereId: String,
+    auteur: Object,
+    matiere: Object,
     note: Number,
     remarque: String,
     rendu: Boolean,

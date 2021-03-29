@@ -4,6 +4,8 @@ let bodyParser = require('body-parser');
 let matiere = require('./routes/matieres');
 let eleve = require('./routes/eleves');
 let devoir = require('./routes/devoirs');
+let users = require('./routes/users');
+var jwt = require('jsonwebtoken');
 
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -52,6 +54,65 @@ app.route(prefix + '/eleves')
 
 app.route(prefix + '/devoirs')
   .get(devoir.getDevoirs);
+
+app.route(prefix + '/users')
+  .get(users.getUsers);
+
+app.route(prefix + '/users/:name')
+  .get(users.getByName)
+
+  /* ------------------- TOKEN ------------------------- */
+
+//any am rah diso dia mijanona eo ihany izy fa rah marina dia 
+//hoentina ato le valiny azo via, get ohatra
+//comparer_na am ao anaty bdd
+//refa marina dia averina any am page d'accueil an front izy
+  
+  app.post('/api/login/', function (req, res) {
+    //auth user
+    var id = req.param('id');
+    var mail = req.param('mail');
+    var password = req.param('password');
+    const user = { 
+      id: id,
+      mail: mail,
+      password: password
+    };
+    const token = jwt.sign({user}, 'my_secret_key')
+    res.json({
+      token: token
+    });
+    var token = jwt.sign({ id: user._id }, config.secret, {
+      expiresIn: 86400 // expires in 24 hours
+    });
+  });
+
+  //protéger_na ito liens ito
+  app.get('/api/protected', ensureToken, function(req, res){
+    jwt.verify(req.token, 'my_secret_key', function(err, data){
+      if(err){
+        res.sendStatus(403)
+      }else{
+        res.json({
+          text: 'this is protected2',
+          data: data
+        });
+      }
+    }); 
+  });
+
+  //omena token iz rah marina le head
+  function ensureToken(req, res, next){
+    const bearerHeader = req.headers["authorization"];
+    if(typeof bearerHeader !== 'undefined'){
+      const bearer = bearerHeader.split(" ");
+      const bearerToken = bearer[1];
+      req.token =bearerToken;
+      next();
+    } else{
+      res.sendStatus(403);
+    }
+  }
 
 // app.route(prefix + '/assignments/:id')
 //   .get(assignment.getAssignment)
