@@ -11,15 +11,15 @@ function getMatieres(req, res){
     });
 }
 
-// // Récupérer un assignment par son id (GET)
-// function getAssignment(req, res){
-//     let assignmentId = req.params.id;
-
-//     Assignment.findOne({id: assignmentId}, (err, assignment) =>{
-//         if(err){res.send(err)}
-//         res.json(assignment);
-//     })
-// }
+function getMatiereById(req, res){
+    let id = req.params.id
+    matiere.findOne({_id: id}, (err, eleve) => {
+        if(err){
+            res.send(err)
+        }
+        res.send(eleve);
+    });
+}
 
 // // Ajout d'un assignment (POST)
 // function postAssignment(req, res){
@@ -70,4 +70,4 @@ function getMatieres(req, res){
 
 
 
-module.exports = { getMatieres };
+module.exports = { getMatieres, getMatiereById };

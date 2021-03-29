@@ -29,4 +29,17 @@ function getDevoirById(req, res){
     })
 }
 
-module.exports = { getDevoirsRendus, getDevoirsNonRendus, getDevoirById };
+// Update d'un assignment (PUT)
+function modifierDevoir(req, res) {
+    console.log("UPDATE recu devoir : ");
+    console.log(req.body);
+    Devoir.findByIdAndUpdate(req.body._id, req.body, {new: true}, (err, devoir) => {
+        if (err) {
+            res.send(err)
+        } else {
+          res.json({message: 'Le devoir a été modifié'})
+        }
+    });
+}
+
+module.exports = { getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir };

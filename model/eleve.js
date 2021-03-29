@@ -5,7 +5,8 @@ let EleveSchema = Schema({
     nom: String,
     mail: String,
     dateNaissance: Date,
-    photo: String
+    photo: String,
+    photoGF: String
 });
 
 // C'est à travers ce modèle Mongoose qu'on pourra faire le CRUD
