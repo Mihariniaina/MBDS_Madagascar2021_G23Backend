@@ -55,7 +55,7 @@ function ajoutDevoir(req, res){
     
     devoir.save( (err) => {
         if(err){
-            res.send('Erreur ajout devoir', err);
+            res.send('Erreur d ajout devoir', err);
         }
         res.json({ message: "Devoir ajouté"})
     });
