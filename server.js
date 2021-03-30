@@ -65,8 +65,9 @@ app.route(prefix + '/devoirs/nonRendus')
 app.route(prefix + '/devoir/:id')
   .get(devoir.getDevoirById);
 
-  app.route(prefix + '/devoir')  
-  .put(devoir.modifierDevoir);    
+  app.route(prefix + '/devoirs')  
+  .put(devoir.modifierDevoir)
+  .post(devoir.ajoutDevoir);    
 
 // app.route(prefix + '/assignments/:id')
 //   .get(assignment.getAssignment)
