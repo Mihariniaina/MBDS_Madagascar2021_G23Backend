@@ -9,8 +9,7 @@ let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 //mongoose.set('debug', true);
 
-// remplacer toute cette chaine par l'URI de connexion à votre propre base dans le cloud s
-//const uri = 'mongodb+srv://rna:rnaMdp@clusternoteko.8wmfa.mongodb.net/assignments?retryWrites=true&w=majority';
+// remplacer toute cette chaine par l'URI de connexion à votre propre base dans le cloud
 const uri = 'mongodb+srv://groupe23:root@cluster0.vlxli.mongodb.net/assignments_gp23?retryWrites=true&w=majority';
 
 const options = {
@@ -65,8 +64,9 @@ app.route(prefix + '/devoirs/nonRendus')
 app.route(prefix + '/devoir/:id')
   .get(devoir.getDevoirById);
 
-  app.route(prefix + '/devoir')  
-  .put(devoir.modifierDevoir);    
+  app.route(prefix + '/devoirs')  
+  .put(devoir.modifierDevoir)
+  .post(devoir.ajoutDevoir);    
 
 // app.route(prefix + '/assignments/:id')
 //   .get(assignment.getAssignment)
@@ -82,5 +82,3 @@ app.listen(port, "0.0.0.0");
 console.log('Serveur démarré sur http://localhost:' + port);
 
 module.exports = app;
-
-

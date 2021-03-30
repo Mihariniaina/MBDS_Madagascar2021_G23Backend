@@ -42,4 +42,23 @@ function modifierDevoir(req, res) {
     });
 }
 
-module.exports = { getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir };
+// Ajout d'un assignment (POST)
+function ajoutDevoir(req, res){
+    let devoir = new Devoir();
+    devoir.auteur = req.body.auteur;
+    devoir.matiere = req.body.matiere;
+    devoir.nomDevoir = req.body.nomDevoir;
+    devoir.note = req.body.note;
+    devoir.remarque = req.body.remarque;
+    devoir.rendu = req.body.rendu;
+    devoir.dateDeRendu = req.body.dateDeRendu;
+    
+    devoir.save( (err) => {
+        if(err){
+            res.send('Erreur d ajout devoir', err);
+        }
+        res.json({ message: "Devoir ajouté"})
+    });
+}
+
+module.exports = { getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir, ajoutDevoir };

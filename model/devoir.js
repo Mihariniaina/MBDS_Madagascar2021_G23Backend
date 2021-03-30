@@ -4,6 +4,7 @@ let Schema = mongoose.Schema;
 let DevoirSchema = Schema({
     auteur: Object,
     matiere: Object,
+    nomDevoir: String,
     note: Number,
     remarque: String,
     rendu: Boolean,
