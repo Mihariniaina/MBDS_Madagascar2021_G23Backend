@@ -7,12 +7,12 @@ function getMoyenneEleve(req, res){
     Devoir.aggregate(
         [
             { $match: { rendu: true, "auteur._id": eleveId } },
-            { $group: { _id: "$auteur._id", moyenne: { $avg: "$note" } } }
+            { $group: { _id: "$auteur._id", resultat: { $avg: "$note" } } }
         ], (err, data) => {
             if(err){
                 res.send(err)
             }
-            res.json(data);
+            res.json(data[0]);
         }
     );
 }
@@ -20,16 +20,18 @@ function getMoyenneEleve(req, res){
 
 function getNbDevoirRenduEleve(req, res){
     let eleveId = req.params.id;
-    Devoir.findOne({
-        rendu: true,
-        "auteur._id": eleveId
-    }, (err, data) => {
-        if(err){
-            res.send(err)
+
+    Devoir.aggregate(
+        [
+            { $match: { rendu: true, "auteur._id": eleveId } },
+            { $group: { _id: "$auteur._id", resultat: { $sum: 1 } } }
+        ], (err, data) => {
+            if(err){
+                res.send(err)
+            }
+            res.json(data[0]);
         }
-        res.json(data);
-    })
-    .countDocuments();
+    );
 }
 
 function getDevoirsRendus(req, res){
