@@ -57,6 +57,9 @@ app.route(prefix + '/eleves')
 app.route(prefix + '/eleve/:id')
   .get(eleve.getEleveById);  
 
+app.route(prefix + '/eleve/moyenne/:id')
+  .get(devoir.getMoyenneEleve);   
+
 app.route(prefix + '/devoirs/rendus')
   .get(devoir.getDevoirsRendus);
 
@@ -65,6 +68,9 @@ app.route(prefix + '/devoirs/nonRendus')
 
 app.route(prefix + '/devoir/:id')
   .get(devoir.getDevoirById);
+
+  app.route(prefix + '/devoir/nbRendu/:id')  
+  .get(devoir.getNbDevoirRenduEleve);
 
   app.route(prefix + '/devoirs')  
   .put(devoir.modifierDevoir)
