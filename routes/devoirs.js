@@ -1,4 +1,36 @@
 let Devoir = require('../model/devoir');
+const eleve = require('../model/eleve');
+
+function getMoyenneEleve(req, res){
+    let eleveId = req.params.id;
+
+    Devoir.aggregate(
+        [
+            { $match: { rendu: true, "auteur._id": eleveId } },
+            { $group: { _id: "$auteur._id", moyenne: { $avg: "$note" } } }
+        ], (err, data) => {
+            if(err){
+                res.send(err)
+            }
+            res.json(data);
+        }
+    );
+}
+
+
+function getNbDevoirRenduEleve(req, res){
+    let eleveId = req.params.id;
+    Devoir.findOne({
+        rendu: true,
+        "auteur._id": eleveId
+    }, (err, data) => {
+        if(err){
+            res.send(err)
+        }
+        res.json(data);
+    })
+    .countDocuments();
+}
 
 function getDevoirsRendus(req, res){
     Devoir.find({rendu: true}, (err, devoirs) => {
@@ -61,4 +93,4 @@ function ajoutDevoir(req, res){
     });
 }
 
-module.exports = { getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir, ajoutDevoir };
+module.exports = { getMoyenneEleve, getNbDevoirRenduEleve, getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir, ajoutDevoir };
