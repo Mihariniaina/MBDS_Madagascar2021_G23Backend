@@ -69,12 +69,15 @@ app.route(prefix + '/devoirs/nonRendus')
 app.route(prefix + '/devoir/:id')
   .get(devoir.getDevoirById);
 
-  app.route(prefix + '/devoir/nbRendu/:id')  
+app.route(prefix + '/devoir/nbRendu/:id')  
   .get(devoir.getNbDevoirRenduEleve);
 
-  app.route(prefix + '/devoirs')  
+app.route(prefix + '/devoirs')  
   .put(devoir.modifierDevoir)
   .post(devoir.ajoutDevoir);    
+
+app.route(prefix + '/devoirs/recherche/:texte')
+  .get(devoir.recherche);  
 
 app.route(prefix + '/users')
   .get(users.getUsers);

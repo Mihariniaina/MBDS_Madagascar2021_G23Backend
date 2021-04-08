@@ -1,5 +1,42 @@
 let Devoir = require('../model/devoir');
-const eleve = require('../model/eleve');
+
+function recherche(req, res){
+    var texte = req.params.texte;
+    Devoir.find(
+        {
+            $or: [
+                {
+                    "auteur.nom":  {
+                        $regex: texte,
+                        $options: 'i'
+                    }
+                },
+                {
+                    "matiere.nom":  {
+                        $regex: texte,
+                        $options: 'i'
+                    }
+                },
+                {
+                    "matiere.professeur":  {
+                        $regex: texte,
+                        $options: 'i'
+                    }
+                },
+                {
+                    nomDevoir: {
+                        $regex: texte,
+                        $options: 'i'
+                    }
+                }
+            ]
+        }, (err, devoirs) => {
+        if(err){
+            res.send(err)
+        }
+        res.send(devoirs);
+    });
+}
 
 function getMoyenneEleve(req, res){
     let eleveId = req.params.id;
@@ -95,4 +132,4 @@ function ajoutDevoir(req, res){
     });
 }
 
-module.exports = { getMoyenneEleve, getNbDevoirRenduEleve, getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir, ajoutDevoir };
+module.exports = { recherche, getMoyenneEleve, getNbDevoirRenduEleve, getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir, ajoutDevoir };
