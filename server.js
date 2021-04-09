@@ -72,6 +72,9 @@ app.route(prefix + '/devoir/:id')
 app.route(prefix + '/devoir/nbRendu/:id')  
   .get(devoir.getNbDevoirRenduEleve);
 
+app.route(prefix + '/devoir/nbRendu2/:id')  
+  .get(devoir.getNbDevoirRenduEleve2);
+
 app.route(prefix + '/devoirs')  
   .put(devoir.modifierDevoir)
   .post(devoir.ajoutDevoir);    

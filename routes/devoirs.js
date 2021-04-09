@@ -71,6 +71,21 @@ function getNbDevoirRenduEleve(req, res){
     );
 }
 
+function getNbDevoirRenduEleve2(req, res){
+
+    Devoir.aggregate(
+        [
+            { $match: { rendu: true } },
+            { $group: { _id: "$auteur._id", resultat: { $sum: 1 } } }
+        ], (err, data) => {
+            if(err){
+                res.send(err)
+            }
+            res.json(data);
+        }
+    );
+}
+
 function getDevoirsRendus(req, res){
     Devoir.find({rendu: true}, (err, devoirs) => {
         if(err){
@@ -132,4 +147,4 @@ function ajoutDevoir(req, res){
     });
 }
 
-module.exports = { recherche, getMoyenneEleve, getNbDevoirRenduEleve, getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir, ajoutDevoir };
+module.exports = { recherche, getMoyenneEleve, getNbDevoirRenduEleve, getNbDevoirRenduEleve2, getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir, ajoutDevoir };
