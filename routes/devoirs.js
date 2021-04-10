@@ -76,7 +76,7 @@ function getNbDevoirRenduEleve2(req, res){
     Devoir.aggregate(
         [
             { $match: { rendu: true } },
-            { $group: { _id: "$auteur._id", resultat: { $sum: 1 } } }
+            { $group: { _id: "$auteur.nom", resultat: { $sum: 1 } } }
         ], (err, data) => {
             if(err){
                 res.send(err)
