@@ -76,6 +76,9 @@ app.route(prefix + '/devoirs')
   .put(devoir.modifierDevoir)
   .post(devoir.ajoutDevoir);    
 
+app.route(prefix + '/devoirs/nbRendu/:estRendu')  
+  .get(devoir.getNbDevoirRenduOuNonGroupByEleve);   
+
 app.route(prefix + '/devoirs/recherche/:texte')
   .get(devoir.recherche);  
 

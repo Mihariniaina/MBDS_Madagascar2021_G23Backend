@@ -54,6 +54,22 @@ function getMoyenneEleve(req, res){
     );
 }
 
+function getNbDevoirRenduOuNonGroupByEleve(req, res){
+    let estRenduString = req.params.estRendu;
+    var estRendu = true
+    if(estRenduString === "false") estRendu = false;
+    Devoir.aggregate(
+        [
+            { $match: { rendu: estRendu } },
+            { $group: { _id: "$auteur.nom", resultat: { $sum: 1 } } }
+        ], (err, data) => {
+            if(err){
+                res.send(err)
+            }
+            res.json(data);
+        }
+    );
+}
 
 function getNbDevoirRenduEleve(req, res){
     let eleveId = req.params.id;
@@ -132,4 +148,4 @@ function ajoutDevoir(req, res){
     });
 }
 
-module.exports = { recherche, getMoyenneEleve, getNbDevoirRenduEleve, getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir, ajoutDevoir };
+module.exports = { getNbDevoirRenduOuNonGroupByEleve, recherche, getMoyenneEleve, getNbDevoirRenduEleve, getDevoirsRendus, getDevoirsNonRendus, getDevoirById, modifierDevoir, ajoutDevoir };
