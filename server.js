@@ -138,14 +138,6 @@ app.route(prefix + '/users/:name')
     }
   }
 
-// app.route(prefix + '/assignments/:id')
-//   .get(assignment.getAssignment)
-//   .delete(assignment.deleteAssignment);
-
-
-// app.route(prefix + '/assignments')
-//   .post(assignment.postAssignment)
-//   .put(assignment.updateAssignment);
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
