@@ -1,9 +1,9 @@
 # ASSIGNMENT-APP (MBDS_Madagascar2021_G23Backend)
 
 ## Informations générales   
-ASSIGNMENT-APP est une application de gestion de devoirs d'une école.
-L'administrateur pourra donc consulter, ajouter, modifier, faire des recherches et voir les détails des devoirs.
-Il peut aussi voir les élèves avec leur moyenne et leue nombre de devoirs rendu et également consulter les matières avec les professeurs corresponsants.
+ASSIGNMENT-APP est une application de gestion de devoirs d'une école.  
+L'administrateur pourra donc consulter, ajouter, modifier, faire des recherches et voir les détails des devoirs.  
+Il peut aussi voir les élèves avec leur moyenne et leue nombre de devoirs rendu et également consulter les matières avec les professeurs corresponsants.  
 ASSIGNMENT-APP est une application de type MEAN et le code contenu dans ce lien github est le côté BACKEND de l'application.
 
 ## Lancement du projet    
