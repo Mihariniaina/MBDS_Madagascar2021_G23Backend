@@ -3,7 +3,7 @@
 ## Informations générales   
 ASSIGNMENT-APP est une application de gestion de devoirs d'une école.  
 L'administrateur pourra donc consulter, ajouter, modifier, faire des recherches et voir les détails des devoirs.  
-Il peut aussi voir les élèves avec leur moyenne et leue nombre de devoirs rendu et également consulter les matières avec les professeurs corresponsants.  
+Il peut aussi voir les élèves avec leur moyenne et leur nombre de devoirs rendu et également consulter les matières avec les professeurs correspondants.  
 ASSIGNMENT-APP est une application de type MEAN et le code contenu dans ce lien github est le côté BACKEND de l'application.
 
 ## Lancement du projet    
@@ -28,13 +28,13 @@ Les fonctionnalités développées sont:
 - Le calcul du nombre de devoirs rendus d'un élève
 - Le calcul du nombre de devoirs rendus pour chaque élève 
 - Le calcul du nombre de devoirs non rendus pour chaque élève 
-2. Sur la matière:  
+2. Sur l'utilisateur:  
 - Le login avec JWT
 - La récupération de tous les utilisateurs
 - La récupération d'un utilisateur selon son nom
-3. Sur l'utilisateur:  
+3. Sur l'élève:  
 - La récupération de tous les élèves
 - La récupération d'un élève selon son id
-4. Sur l'élève:  
+4. Sur la matière:  
 - La récupération de toutes les matières
 - La récupération d'une matière selon son id
