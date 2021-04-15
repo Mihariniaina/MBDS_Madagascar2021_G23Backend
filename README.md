@@ -10,6 +10,15 @@ ASSIGNMENT-APP est une application de type MEAN et le code contenu dans ce lien 
 Le côté backend de ASSIGNMENT-APP est déjà lancé automatiquement puisqu'il est déployé en ligne et l'utilisateur n'a plus besoin de la faire tourner sur sa machine.    
 Vous pouvez voir le deploiement du côté backend de l'application sur `https://mbdsmadagascar2021g23backend.herokuapp.com/api` et testez comme par exemple [https://mbdsmadagascar2021g23backend.herokuapp.com/api/devoirs/rendus](https://mbdsmadagascar2021g23backend.herokuapp.com/api/devoirs/rendus).
 
+Et si vous voulez lancer le projet en local, il faut:
+- Télécharger le code source du projet
+- Ouvrir le code source dans un éditeur de texte (Visual Studio Code comme par exemple)
+- Installer NodeJs et mettre à jour le npm
+- Ouvrir un terminal dans le chemin `/MBDS_Madagascar2021_G23Backend-master/`
+- Faire un `npm install`
+- Faire un `node server.js`
+- Si tout se passe bien, il va indiqué que le "Serveur est démarré sur http://localhost:8010" et qu'on est "connecté à la base MongoDB assignments_gp23 dans le cloud". Il vous suffit alors de tester comme par exemple [http://localhost:8010/api/devoirs/rendus](http://localhost:8010/api/devoirs/rendus) pour lister tous les devoirs rendus.
+
 ## Auteur    
 L'application a été conçue par le groupe 23 composé de:
 - MIHARINIAINA Andriamihanta Rilah Mario    n°12  
